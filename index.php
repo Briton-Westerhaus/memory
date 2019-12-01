@@ -101,19 +101,6 @@ function flippy(){
 	}
 }
 ?>
-<br />
-<a href="comment.php?category=games&content=Memory">Comment</a>
-<br />
-<?php
-	if(file_exists("comments/games/Memory")):
-	$comments = fopen("comments/games/Memory", "r+");
-		$oneline = fgets($comments);
-		echo "<b>Comments: $oneline ";
-		$oneline = fgets($comments);
-		echo "Average Rating: $oneline</b><br />";
-		$oneline = fgets($comments);
-	endif;
-?>
 </div>
 </center>
 </div>
