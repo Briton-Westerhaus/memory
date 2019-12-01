@@ -64,9 +64,9 @@ for($i = 0; $i < 4; $i++){
 			echo '<td>' . $_SESSION['matrix'][$i][$j]['card'] . '</td>';
 		else{
 			if($isshow == 0)
-				echo '<td><button type="submit" name="submit" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "media/memblank.bmp" /></button></td>';
+				echo '<td><button type="submit" name="submit" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "memblank.bmp" /></button></td>';
 			if($isshow == 1)
-				echo '<td><img src = "media/memblank.bmp" /></td>';
+				echo '<td><img src = "memblank.bmp" /></td>';
 		}
 	}
 	echo "</tr>";
@@ -87,7 +87,7 @@ function setmatrix(){
 				$temp = rand(0, 7);
 			}
 			$used[$temp]++;
-			$_SESSION['matrix'][$i][$j]['card'] = '<image src = "media/mem' . $temp . '.bmp" />';
+			$_SESSION['matrix'][$i][$j]['card'] = '<image src = "mem' . $temp . '.bmp" />';
 		}
 	}
 	$_SESSION['flipped'] = 0;
