@@ -1,7 +1,8 @@
 <?php
 session_start();
 ?>
-<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <title>Briton Westerhaus - Memory</title>
 <meta name="description" content="An online version of the memory game." />
@@ -79,7 +80,7 @@ echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
 
 function setmatrix(){
 	$used = array(0, 0, 0, 0, 0, 0, 0, 0);
-	$_SESSION['matrix'] = array(array(array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0)), array(array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0)), array(array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0)), array(array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0), array(card => 0, flipped => 0)));
+	$_SESSION['matrix'] = array(array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)));
 	for($i = 0; $i < 4; $i++){
 		for($j = 0; $j < 4; $j++){
 			$temp = rand(0, 7);
