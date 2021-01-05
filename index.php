@@ -18,7 +18,6 @@
 				$isshowing = 0;
 				if (!isSet($_SESSION['matrix'])) {
 					setMatrix();
-					View(); // What is this?
 				} else {
 					if ($_SESSION['flipped'] == 0) {
 						$temp = explode(":", $_POST['submit']);
