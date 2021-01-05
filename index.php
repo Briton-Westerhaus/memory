@@ -15,9 +15,9 @@
 			<h1>Memory</h1>
 			<?php
 				$isshowing = 0;
-				if (!IsSet($_SESSION['matrix'])) {
-					setmatrix();
-					View();
+				if (!isSet($_SESSION['matrix'])) {
+					setMatrix();
+					View(); // What is this?
 				} else {
 					if ($_SESSION['flipped'] == 0) {
 						$temp = explode(":", $_POST['submit']);
@@ -50,13 +50,13 @@
 						}
 					}
 					if ($_POST['submit'] == 'Reset')
-						setmatrix();
+						setMatrix();
 					if ($_POST['submit'] == 'Flip back over')
 						flippy();
 				}
-				displayboard($isshowing);
+				displayBoard($isshowing);
 
-				function displayboard($isshow) {
+				function displayBoard($isshow) {
 					echo '<form action = "index.php" method = "post">';
 					echo '<table border = "border">';
 					for ($i = 0; $i < 4; $i++) {
@@ -79,7 +79,7 @@
 					echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
 				}
 
-				function setmatrix() {
+				function setMatrix() {
 					$used = array(0, 0, 0, 0, 0, 0, 0, 0);
 					$_SESSION['matrix'] = array(array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)));
 					for ($i = 0; $i < 4; $i++) {
