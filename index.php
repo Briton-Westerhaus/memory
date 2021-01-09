@@ -15,7 +15,7 @@
 		<div class="content">
 			<h1>Memory</h1>
 			<?php
-				$isshowing = 0;
+				$isshowing = false;
 				if (!isSet($_SESSION['matrix'])) {
 					setMatrix();
 				} else {
@@ -25,7 +25,9 @@
 						$_SESSION['flipped']++;
 					} else {
 						if ($_SESSION['flipped'] == 1 && $_POST['submit'] != 'Flip back over') {
-							$isshowing = 1;
+							// Completed turn
+							$_SESSION['turn_count']++;
+							$isshowing = true;
 							$temp = explode(":", $_POST['submit']);
 							$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 							$firsti = 5;
