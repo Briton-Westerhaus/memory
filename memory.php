@@ -1,5 +1,6 @@
 <?php
     function displayBoard($isshow) {
+        echo "<p>Turns: " . $_SESSION['turn_count'];
         echo '<form action = "index.php" method = "post">';
         echo '<table border = "border">';
         for ($i = 0; $i < 4; $i++) {

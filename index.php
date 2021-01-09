@@ -57,7 +57,6 @@
 						flippy();
 				}
 				
-				echo $_SESSION['turn_count'];
 				displayBoard($isshowing);
 			?>
 		</div>
