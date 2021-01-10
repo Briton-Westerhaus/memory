@@ -34,7 +34,7 @@
                     $temp = rand(0, 7);
                 }
                 $used[$temp]++;
-                $_SESSION['matrix'][$i][$j]['card'] = '<image src = "mem' . $temp . '.bmp" />';
+                $_SESSION['matrix'][$i][$j]['card'] = '<image src = "mem' . $temp . '.png" />';
             }
         }
         $_SESSION['flipped'] = 0;

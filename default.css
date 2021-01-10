@@ -33,3 +33,8 @@ p { /* This is for the turn counter. May want to make this a class later */
     text-align: left;
     margin-bottom: .25em;
 }
+
+table img {
+    width: 150px;
+    height: 150px;
+}
