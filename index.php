@@ -33,7 +33,7 @@
 							$firsti = 5;
 							$firstj = 5;
 							for ($i = 0; $i < 4; $i++) {
-								for($j = 0; $j < 4; $j++){
+								for ($j = 0; $j < 5; $j++) {
 									if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
 										if($firsti == 5){
 											$firsti = $i;
