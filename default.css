@@ -33,3 +33,30 @@ p { /* This is for the turn counter. May want to make this a class later */
     text-align: left;
     margin-bottom: .25em;
 }
+
+table {
+    width: 784px; /* 150x + 4(x + 1) + 2x */
+    height: 628px; /* 150y + 4(y + 1) + 2y */
+    border-spacing: 4px;
+    font-size: 0px;
+}
+
+td img, td button {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    font-size: 0px;
+}
+
+button {
+    cursor: pointer;
+}
+
+td {
+    width: 20%;
+    height: 25%;
+    border: 1px solid rgb(164, 164, 164);
+    border-radius: 7.5%;
+    overflow: hidden;
+}
