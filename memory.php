@@ -10,9 +10,9 @@
                     echo '<td>' . $_SESSION['matrix'][$i][$j]['card'] . '</td>';
                 } else {
                     if ($isshow)
-                        echo '<td><img src = "memblank.bmp" /></td>';
+                        echo '<td><img src = "memblank.png" /></td>';
                     else
-                        echo '<td><button type="submit" name="submit" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "memblank.bmp" /></button></td>';
+                        echo '<td><button type="submit" name="submit" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "memblank.png" /></button></td>';
                     
                 }
             }
