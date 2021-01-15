@@ -12,9 +12,9 @@
         echo "<p>Turns: " . $_SESSION['turn_count'];
         echo '<form action = "index.php" method = "post">';
         echo '<table>';
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < $_SESSION['height']; $i++) {
             echo "<tr>";
-            for ($j = 0; $j < 5; $j++) {
+            for ($j = 0; $j < $_SESSION['width']; $j++) {
                 if ($_SESSION['matrix'][$i][$j]['flipped'] == 1 || $_SESSION['matrix'][$i][$j]['temp'] == 1) {
                     echo '<td>' . $_SESSION['matrix'][$i][$j]['card'] . '</td>';
                 } else {
@@ -33,12 +33,13 @@
         echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
     }
 
-    function setMatrix() {
-        $_SESSION['height'] = 4;
-        $_SESSION['width'] = 5;
+    function setMatrix($height, $width) {
+        $_SESSION['height'] = $height;
+        $_SESSION['width'] = $width;
         $array_size = $_SESSION['width'] * $_SESSION['height'] / 2;
         $used = array_fill(0, $array_size, 0);
-        $_SESSION['matrix'] = array(array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)));
+        $_SESSION['matrix'] = array_fill(0, $_SESSION['height'], array_fill(0, $_SESSION['width'], array('card' => 0, 'flipped' => 0)));
+        //array( (array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)));
         for ($i = 0; $i < $_SESSION['height']; $i++) {
             for ($j = 0; $j < $_SESSION['width']; $j++) {
                 $temp = rand(0, $array_size - 1);
