@@ -1,4 +1,13 @@
 <?php
+    /*
+    $_SESSION variables:
+    matrix - the 2d array of the cards and their info
+    turn_count - the number of turns the player has taken
+    flipped - the number of flipped cards
+    height - height of the game matrix
+    width - width of the game matrix.
+    */
+
     function displayBoard($isshow) {
         echo "<p>Turns: " . $_SESSION['turn_count'];
         echo '<form action = "index.php" method = "post">';
@@ -25,13 +34,16 @@
     }
 
     function setMatrix() {
-        $used = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        $_SESSION['height'] = 4;
+        $_SESSION['width'] = 5;
+        $array_size = $_SESSION['width'] * $_SESSION['height'] / 2;
+        $used = array_fill(0, $array_size, 0);
         $_SESSION['matrix'] = array(array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)), array(array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0), array('card' => 0, 'flipped' => 0)));
-        for ($i = 0; $i < 4; $i++) {
-            for ($j = 0; $j < 5; $j++) {
-                $temp = rand(0, 9);
+        for ($i = 0; $i < $_SESSION['height']; $i++) {
+            for ($j = 0; $j < $_SESSION['width']; $j++) {
+                $temp = rand(0, $array_size - 1);
                 while ($used[$temp] >= 2) {
-                    $temp = rand(0, 9);
+                    $temp = rand(0, $array_size - 1);
                 }
                 $used[$temp]++;
                 $_SESSION['matrix'][$i][$j]['card'] = '<image src = "mem' . $temp . '.png" />';
@@ -43,8 +55,8 @@
 
     function flippy() {
         $_SESSION['flipped'] = 0;
-        for ($i = 0; $i < 4; $i++) {
-            for ($j = 0; $j < 5; $j++) {
+        for ($i = 0; $i < $_SESSION['height']; $i++) {
+            for ($j = 0; $j < $_SESSION['width']; $j++) {
                 $_SESSION['matrix'][$i][$j]['temp'] = 0;
             }
         }

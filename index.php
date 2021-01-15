@@ -32,10 +32,10 @@
 							$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 							$firsti = 5;
 							$firstj = 5;
-							for ($i = 0; $i < 4; $i++) {
-								for ($j = 0; $j < 5; $j++) {
+							for ($i = 0; $i < $_SESSION['height']; $i++) {
+								for ($j = 0; $j < $_SESSION['width']; $j++) {
 									if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
-										if($firsti == 5){
+										if ($firsti == 5) {
 											$firsti = $i;
 											$firstj = $j;
 										} else {
