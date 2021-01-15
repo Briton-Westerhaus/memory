@@ -34,11 +34,17 @@ p { /* This is for the turn counter. May want to make this a class later */
     margin-bottom: .25em;
 }
 
+form {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 table {
-    width: 784px; /* 150x + 4(x + 1) + 2x */
-    height: 628px; /* 150y + 4(y + 1) + 2y */
     border-spacing: 4px;
     font-size: 0px;
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 td img, td button {
@@ -54,8 +60,6 @@ button {
 }
 
 td {
-    width: 20%;
-    height: 25%;
     border: 1px solid rgb(164, 164, 164);
     border-radius: 7.5%;
     overflow: hidden;

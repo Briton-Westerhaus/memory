@@ -10,6 +10,24 @@
 		<meta name="keywords" content="media, entertainment, fun, games" />
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
+		<?php
+			if ($_POST['submit'] == 'Reset') {
+				unset($_SESSION['height']);
+				unset($_SESSION['width']);
+			}
+			if (isSet($_SESSION['height']) && isSet($_SESSION['width'])) {
+				echo '<style type="text/css">';
+				echo '  table {';
+				echo '    height: ' . (156 * $_SESSION['height'] + 4) . 'px;';
+				echo '    width: ' . (156 * $_SESSION['width'] + 4) . 'px;';
+				echo '  }';
+				echo '	td {';
+				echo '		height: ' . (100 / $_SESSION['height']) . '%;';
+				echo '		width: ' . (100 / $_SESSION['width']) . '%;';
+				echo '	}';
+				echo '</style>';
+			}
+		?>
 	</head>
 	<body>
 		<div class="content">
@@ -18,7 +36,7 @@
 				$isshowing = false;
 				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submit'] == 'Reset') {
 					echo '<h3>What size board?</h3>';
-					echo '<form action = "index.php" method = "post">';
+					echo '<form action="index.php" method="post">';
 					echo '<input type="submit" name="submit" value="3 x 4" />';
 					echo '<input type="submit" name="submit" value="4 x 5" />';
 					echo '<input type="submit" name="submit" value="5 x 6" />';
@@ -26,6 +44,7 @@
 					
 				} else {
 					if ($_POST['submit'] == '3 x 4') {
+						echo "Setting 3 x 4";
 						setMatrix(3 ,4);
 					} else if ($_POST['submit'] == '4 x 5') {
 						setMatrix(4, 5);
