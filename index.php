@@ -11,7 +11,7 @@
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
 		<?php
-			if ($_POST['submit'] == 'Reset') {
+			if (isSet($_POST['submit']) && $_POST['submit'] == 'Reset') {
 				unset($_SESSION['height']);
 				unset($_SESSION['width']);
 			}
