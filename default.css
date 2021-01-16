@@ -14,7 +14,7 @@ body {
 }
 
 .content {
-    width: auto;
+    width: 45%;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
@@ -27,6 +27,7 @@ h1 {
     font-weight: normal;
     margin: 1em;
 }
+
 p { /* This is for the turn counter. May want to make this a class later */
     font-size: 1.25em;
     font-weight: bold;
@@ -34,11 +35,29 @@ p { /* This is for the turn counter. May want to make this a class later */
     margin-bottom: .25em;
 }
 
+form {
+    height: 100%;
+    width: 100%;
+}
+
+.aspect-ratio-maintainer{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.inner-ratio-maintainer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    line-height: 0px;
+}
+
 table {
-    width: 784px; /* 150x + 4(x + 1) + 2x */
-    height: 628px; /* 150y + 4(y + 1) + 2y */
     border-spacing: 4px;
     font-size: 0px;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 td img, td button {
@@ -54,8 +73,6 @@ button {
 }
 
 td {
-    width: 20%;
-    height: 25%;
     border: 1px solid rgb(164, 164, 164);
     border-radius: 7.5%;
     overflow: hidden;
