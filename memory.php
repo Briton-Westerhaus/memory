@@ -36,7 +36,6 @@
     function setMatrix($height, $width) {
         $_SESSION['height'] = $height;
         $_SESSION['width'] = $width;
-        echo "are we here?";
         echo '<style type="text/css">';
         echo '  table {';
         echo '    height: ' . (156 * $_SESSION['height'] + 4) . 'px;';
@@ -47,7 +46,6 @@
         echo '		width: ' . (100 / $_SESSION['width']) . '%;';
         echo '	}';
         echo '</style>';
-        echo "are we there?";
         $array_size = $_SESSION['width'] * $_SESSION['height'] / 2;
         $used = array_fill(0, $array_size, 0);
         $_SESSION['matrix'] = array_fill(0, $_SESSION['height'], array_fill(0, $_SESSION['width'], array('card' => 0, 'flipped' => 0)));
