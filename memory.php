@@ -11,6 +11,8 @@
     function displayBoard($isshow) {
         echo "<p>Turns: " . $_SESSION['turn_count'];
         echo '<form action = "index.php" method = "post">';
+        echo '<div class="aspect-ratio-maintainer">';
+        echo '<div class="inner-ratio-maintainer">';
         echo '<table>';
         for ($i = 0; $i < $_SESSION['height']; $i++) {
             echo "<tr>";
@@ -27,7 +29,9 @@
             }
             echo "</tr>";
         }
-        echo '</table><br />';
+        echo '</table>';
+        echo '</div>';
+        echo '</div>';
         if ($isshow)
             echo '<input type = "submit" name = "submit" value = "Flip back over" />';
         echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
@@ -36,10 +40,10 @@
     function setMatrix($height, $width) {
         $_SESSION['height'] = $height;
         $_SESSION['width'] = $width;
+        $_SESSION['flipped'] = 0;
         echo '<style type="text/css">';
-        echo '  table {';
-        echo '    height: ' . (156 * $_SESSION['height'] + 4) . 'px;';
-        echo '    width: ' . (156 * $_SESSION['width'] + 4) . 'px;';
+        echo '  .aspect-ratio-maintainer {';
+        echo '    padding-bottom: ' . ($_SESSION['height'] / $_SESSION['width'] * 100) . '%;';
         echo '  }';
         echo '	td {';
         echo '		height: ' . (100 / $_SESSION['height']) . '%;';

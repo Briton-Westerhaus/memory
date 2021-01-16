@@ -17,9 +17,8 @@
 			}
 			if (isSet($_SESSION['height']) && isSet($_SESSION['width'])) {
 				echo '<style type="text/css">';
-				echo '  table {';
-				echo '    height: ' . (156 * $_SESSION['height'] + 4) . 'px;';
-				echo '    width: ' . (156 * $_SESSION['width'] + 4) . 'px;';
+				echo '  .aspect-ratio-maintainer {';
+				echo '    padding-bottom: ' . ($_SESSION['height'] / $_SESSION['width'] * 100) . '%;';
 				echo '  }';
 				echo '	td {';
 				echo '		height: ' . (100 / $_SESSION['height']) . '%;';
@@ -49,7 +48,7 @@
 					echo '<input type="submit" name="submit" value="5 x 6" />';
 					echo '</form>';
 				} else {
-					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == '3 x 4') || $_POST['submit'] == '4 x 5' || $_POST['submit'] == '5 x 6') {
+					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == '3 x 4' || $_POST['submit'] == '4 x 5' || $_POST['submit'] == '5 x 6')) {
 						$temp = explode(":", $_POST['submit']);
 						$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 						$_SESSION['flipped']++;
