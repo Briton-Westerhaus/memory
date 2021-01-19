@@ -89,10 +89,10 @@ input[type="submit"] {
     border: none;
     cursor: pointer;
     background-color: (225, 225, 227);
-    box-shadow: 0px 0px 2px 2px rgb(197, 197, 201) inset
+    box-shadow: 0px 0px 6px 2px rgb(197, 197, 201) inset
 }
 
 input[type=submit]:hover {
     background-color: rgb(197, 197, 201);
-    box-shadow: 0px 0px 2px 2px rgb(225, 225, 227) inset;
+    box-shadow: 0px 0px 6px 2px rgb(245, 245, 247) inset;
 }
