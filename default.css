@@ -68,7 +68,8 @@ td img, td button {
     font-size: 0px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
 button {
