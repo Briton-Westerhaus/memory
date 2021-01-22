@@ -66,6 +66,9 @@ td img, td button {
     margin: 0px;
     border: none;
     font-size: 0px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
 }
 
 button {
@@ -76,4 +79,6 @@ td {
     border: 1px solid rgb(164, 164, 164);
     border-radius: 7.5%;
     overflow: hidden;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
