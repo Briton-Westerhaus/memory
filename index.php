@@ -71,7 +71,7 @@
 							$firstj = 5;
 							for ($i = 0; $i < $_SESSION['height']; $i++) {
 								for ($j = 0; $j < $_SESSION['width']; $j++) {
-									if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
+									if ($_SESSION['matrix'][$i][$j]['temp'] > 0) {
 										if ($firsti == 5) {
 											$firsti = $i;
 											$firstj = $j;
