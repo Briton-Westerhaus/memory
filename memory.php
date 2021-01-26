@@ -18,7 +18,7 @@
             echo "<tr>";
             for ($j = 0; $j < $_SESSION['width']; $j++) {
                 if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
-                    echo '<td id="Flipper"><img src="memblank.png" /><img src="' . $_SESSION['matrix'][$i][$j]['card'] . '" style="transform: rotateY(180deg); margin-top: -100%;" /></td>';
+                    echo '<td id="Flipper"><img src="memblank.png" /><img src="' . $_SESSION['matrix'][$i][$j]['card'] . '" /></td>';
                     $_SESSION['matrix'][$i][$j]['temp']++;
                 } else if ($_SESSION['matrix'][$i][$j]['flipped'] == 1 || $_SESSION['matrix'][$i][$j]['temp'] > 0) {
                     echo '<td><img src="' . $_SESSION['matrix'][$i][$j]['card'] . '" /></td>';
