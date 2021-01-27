@@ -10,6 +10,14 @@
 		<meta name="keywords" content="media, entertainment, fun, games" />
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
+		<script type="text/javascript">
+			function flip() {
+				let flipper = document.getElementById('Flipper');
+				if (!!flipper) {
+					flipper.style.transform = "rotateY(180deg)";
+				}
+			}
+		</script>
 		<?php
 			if (isSet($_POST['submit']) && $_POST['submit'] == 'Reset') {
 				unset($_SESSION['height']);
@@ -28,7 +36,7 @@
 			}
 		?>
 	</head>
-	<body>
+	<body onload="flip();">
 		<div class="content">
 			<h1>Memory</h1>
 			<?php
@@ -63,7 +71,7 @@
 							$firstj = 5;
 							for ($i = 0; $i < $_SESSION['height']; $i++) {
 								for ($j = 0; $j < $_SESSION['width']; $j++) {
-									if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
+									if ($_SESSION['matrix'][$i][$j]['temp'] > 0) {
 										if ($firsti == 5) {
 											$firsti = $i;
 											$firstj = $j;
@@ -71,8 +79,10 @@
 											if ($_SESSION['matrix'][$firsti][$firstj]['card'] == $_SESSION['matrix'][$i][$j]['card']) {
 												$_SESSION['matrix'][$firsti][$firstj]['flipped'] = 1;
 												$_SESSION['matrix'][$i][$j]['flipped'] = 1;
+												$isshowing = false;
+												displayBoard($isshowing);
+												$skipShow = true;
 												flippy();
-												$isshowing = 0;
 											}
 										}
 									}
@@ -82,7 +92,8 @@
 					}
 					if ($_POST['submit'] == 'Flip back over')
 						flippy();
-					displayBoard($isshowing);
+					if (!$skipShow)
+						displayBoard($isshowing);
 				}
 			?>
 		</div>

@@ -17,8 +17,11 @@
         for ($i = 0; $i < $_SESSION['height']; $i++) {
             echo "<tr>";
             for ($j = 0; $j < $_SESSION['width']; $j++) {
-                if ($_SESSION['matrix'][$i][$j]['flipped'] == 1 || $_SESSION['matrix'][$i][$j]['temp'] == 1) {
-                    echo '<td>' . $_SESSION['matrix'][$i][$j]['card'] . '</td>';
+                if ($_SESSION['matrix'][$i][$j]['temp'] == 1) {
+                    echo '<td id="Flipper"><img src="memblank.png" /><img src="' . $_SESSION['matrix'][$i][$j]['card'] . '" /></td>';
+                    $_SESSION['matrix'][$i][$j]['temp']++;
+                } else if ($_SESSION['matrix'][$i][$j]['flipped'] == 1 || $_SESSION['matrix'][$i][$j]['temp'] > 0) {
+                    echo '<td><img src="' . $_SESSION['matrix'][$i][$j]['card'] . '" /></td>';
                 } else {
                     if ($isshow)
                         echo '<td><img src = "memblank.png" /></td>';
@@ -61,7 +64,7 @@
                     $temp = rand(0, $array_size - 1);
                 }
                 $used[$temp]++;
-                $_SESSION['matrix'][$i][$j]['card'] = '<image src = "mem' . $temp . '.png" />';
+                $_SESSION['matrix'][$i][$j]['card'] = 'mem' . $temp . '.png';
             }
         }
         $_SESSION['flipped'] = 0;
