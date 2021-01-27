@@ -79,8 +79,10 @@
 											if ($_SESSION['matrix'][$firsti][$firstj]['card'] == $_SESSION['matrix'][$i][$j]['card']) {
 												$_SESSION['matrix'][$firsti][$firstj]['flipped'] = 1;
 												$_SESSION['matrix'][$i][$j]['flipped'] = 1;
+												$isshowing = false;
+												displayBoard($isshowing);
+												$skipShow = true;
 												flippy();
-												$isshowing = 0;
 											}
 										}
 									}
@@ -90,7 +92,8 @@
 					}
 					if ($_POST['submit'] == 'Flip back over')
 						flippy();
-					displayBoard($isshowing);
+					if (!$skipShow)
+						displayBoard($isshowing);
 				}
 			?>
 		</div>
