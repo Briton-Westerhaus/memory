@@ -41,22 +41,33 @@
 			<h1>Memory</h1>
 			<?php
 				$isshowing = false;
-				if ($_POST['submit'] == '3 x 4') {
+				if ($_POST['submit'] == 'Small') {
 					setMatrix(3 ,4);
-				} else if ($_POST['submit'] == '4 x 5') {
+				} else if ($_POST['submit'] == 'Medium') {
 					setMatrix(4, 5);
-				} else if ($_POST['submit'] == '5 x 6') {
+				} else if ($_POST['submit'] == 'Large') {
 					setMatrix(5, 6);
 				} 
 				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submit'] == 'Reset') {
-					echo '<h3>What size board?</h3>';
-					echo '<form action="index.php" method="post">';
-					echo '<input type="submit" name="submit" value="3 x 4" />';
-					echo '<input type="submit" name="submit" value="4 x 5" />';
-					echo '<input type="submit" name="submit" value="5 x 6" />';
-					echo '</form>';
+					?>
+					<h3>What size board?</h3>
+					<form action="index.php" method="post">
+						<section>
+							<input type="submit" name="submit" value="Small" />
+							<h5>(3 x 4)</h5>
+						</section><!--
+						--><section>
+							<input type="submit" name="submit" value="Medium" />
+							<h5>(4 x 5)</h5>
+						</section><!--
+						--><section>
+							<input type="submit" name="submit" value="Large" />
+							<h5>(5 x 6)</h5>
+						</section>
+					</form>
+					<?php
 				} else {
-					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == '3 x 4' || $_POST['submit'] == '4 x 5' || $_POST['submit'] == '5 x 6')) {
+					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == 'Small' || $_POST['submit'] == 'Medium' || $_POST['submit'] == 'Large')) {
 						$temp = explode(":", $_POST['submit']);
 						$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 						$_SESSION['flipped']++;

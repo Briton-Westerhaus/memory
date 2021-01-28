@@ -32,6 +32,10 @@ h3 {
     margin-bottom: 1em;
 }
 
+h5 {
+    font-weight: normal;
+}
+
 p { /* This is for the turn counter. May want to make this a class later */
     font-size: 1.25em;
     font-weight: bold;
@@ -42,6 +46,10 @@ p { /* This is for the turn counter. May want to make this a class later */
 form {
     height: 100%;
     width: 100%;
+}
+
+section {
+    display: inline-block;
 }
 
 .aspect-ratio-maintainer{
