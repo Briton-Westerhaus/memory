@@ -11,8 +11,18 @@
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
 		<script type="text/javascript">
+			function displayNotification(message) {
+				let notification = document.getElementById('Notification');
+				notification.innerHtml = message;
+				notification.style.top = "-2px";
+				window.setTimeout(function() {
+					notification.style.transition = "1s linear 3s";
+					notification.style.top = "-3.5em";
+				}, 100);
+			}
+
 			function flip() {
-				document.getElementById("Notification").style.marginTop = "-3.2em";
+				displayNotification("Testing a notification")
 				let flipper = document.getElementById('Flipper');
 				if (!!flipper) {
 					flipper.style.transform = "rotateY(180deg)";
