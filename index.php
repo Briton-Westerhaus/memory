@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="default.css" />
 		<script type="text/javascript">
 			function flip() {
+				document.getElementById("Notification").style.marginTop = "-3.2em";
 				let flipper = document.getElementById('Flipper');
 				if (!!flipper) {
 					flipper.style.transform = "rotateY(180deg)";
@@ -38,6 +39,7 @@
 	</head>
 	<body onload="flip();">
 		<div class="content">
+			<div id="Notification">This is a notification.</div>
 			<h1>Memory</h1>
 			<?php
 				$isshowing = false;
