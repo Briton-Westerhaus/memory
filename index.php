@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 			function displayNotification(message) {
 				let notification = document.getElementById('Notification');
-				notification.innerHtml = message;
+				notification.innerHTML = message;
 				notification.style.top = "-2px";
 				window.setTimeout(function() {
 					notification.style.transition = "1s linear 3s";
@@ -22,7 +22,6 @@
 			}
 
 			function flip() {
-				displayNotification("Testing a notification")
 				let flipper = document.getElementById('Flipper');
 				if (!!flipper) {
 					flipper.style.transform = "rotateY(180deg)";
@@ -49,7 +48,7 @@
 	</head>
 	<body onload="flip();">
 		<div class="content">
-			<div id="Notification">This is a notification.</div>
+			<div id="Notification"></div>
 			<h1>Memory</h1>
 			<?php
 				$isshowing = false;

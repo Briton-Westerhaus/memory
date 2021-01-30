@@ -38,6 +38,7 @@
         if ($isshow)
             echo '<input type = "submit" name = "submit" value = "Flip back over" />';
         echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
+        // echo '<script type="text/javascript">displayNotification("You have won in ' . $_SESSION['turns'] . ' moves!")</script>'; // This is displayed on a win!
     }
 
     function setMatrix($height, $width) {
