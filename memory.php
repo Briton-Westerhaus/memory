@@ -10,7 +10,7 @@
 
     function displayBoard($isshow) {
         echo "<p>Turns: " . $_SESSION['turn_count'];
-        echo '<form action = "index.php" method = "post">';
+        echo '<form action="index.php" method="post" id="TheForm">';
         echo '<div class="aspect-ratio-maintainer">';
         echo '<div class="inner-ratio-maintainer">';
         echo '<table>';
@@ -26,7 +26,7 @@
                     if ($isshow)
                         echo '<td><img src = "memblank.png" /></td>';
                     else
-                        echo '<td><button type="submit" name="submit" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "memblank.png" /></button></td>';
+                        echo '<td><button type="submit" name="submitButton" value="' . "this:" . $i . ":" . $j . '">'."<!--:$i:$j:--><img src".' = "memblank.png" /></button></td>';
                     
                 }
             }
@@ -35,10 +35,27 @@
         echo '</table>';
         echo '</div>';
         echo '</div>';
-        if ($isshow)
-            echo '<input type = "submit" name = "submit" value = "Flip back over" />';
-        echo '<input type = "submit" name = "submit" value = "Reset" /></form>';
-        // echo '<script type="text/javascript">displayNotification("You have won in ' . $_SESSION['turns'] . ' moves!")</script>'; // This is displayed on a win!
+        if ($isshow) {
+            echo '<input type="hidden" name="submitButton" value="Flip back over" />';
+            echo '<script type="text/javascript">displayNotification("Flipping back over in 5 seconds.");';   
+            echo 'window.setTimeout(function() {document.getElementById("TheForm").submit();}, 5000);';
+            echo '</script>';
+            echo '<input type="submit" name="submitButton" value="Flip back over" />';
+        }            
+        echo '<input type="submit" name="submitButton" value="New Game" /></form>';
+        $gameEnd = true;
+        for ($i = 0; $i < $_SESSION['height']; $i++) {
+            for ($j = 0; $j < $_SESSION['width']; $j++) {
+                if ($_SESSION['matrix'][$i][$j]['flipped'] == 0) {
+                    $gameEnd = false;
+                    break;
+                }
+                if (!$gameEnd)
+                    break;
+            }
+        }
+        if ($gameEnd)
+            echo '<script type="text/javascript">displayNotification("You have won in ' . $_SESSION['turn_count'] . ' moves!");</script>';
     }
 
     function setMatrix($height, $width) {

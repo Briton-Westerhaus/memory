@@ -29,7 +29,7 @@
 			}
 		</script>
 		<?php
-			if (isSet($_POST['submit']) && $_POST['submit'] == 'Reset') {
+			if (isSet($_POST['submitButton']) && $_POST['submitButton'] == 'New Game') {
 				unset($_SESSION['height']);
 				unset($_SESSION['width']);
 			}
@@ -52,42 +52,42 @@
 			<h1>Memory</h1>
 			<?php
 				$isshowing = false;
-				if ($_POST['submit'] == 'Small') {
+				if ($_POST['submitButton'] == 'Small') {
 					setMatrix(3 ,4);
-				} else if ($_POST['submit'] == 'Medium') {
+				} else if ($_POST['submitButton'] == 'Medium') {
 					setMatrix(4, 5);
-				} else if ($_POST['submit'] == 'Large') {
+				} else if ($_POST['submitButton'] == 'Large') {
 					setMatrix(5, 6);
 				} 
-				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submit'] == 'Reset') {
+				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submitButton'] == 'New Game') {
 					?>
 					<h3>What size board?</h3>
 					<form action="index.php" method="post">
 						<section>
-							<input type="submit" name="submit" value="Small" />
+							<input type="submit" name="submitButton" value="Small" />
 							<h5>(3 x 4)</h5>
 						</section><!--
 						--><section>
-							<input type="submit" name="submit" value="Medium" />
+							<input type="submit" name="submitButton" value="Medium" />
 							<h5>(4 x 5)</h5>
 						</section><!--
 						--><section>
-							<input type="submit" name="submit" value="Large" />
+							<input type="submit" name="submitButton" value="Large" />
 							<h5>(5 x 6)</h5>
 						</section>
 					</form>
 					<?php
 				} else {
-					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == 'Small' || $_POST['submit'] == 'Medium' || $_POST['submit'] == 'Large')) {
-						$temp = explode(":", $_POST['submit']);
+					if ($_SESSION['flipped'] == 0 && !($_POST['submitButton'] == 'Small' || $_POST['submitButton'] == 'Medium' || $_POST['submitButton'] == 'Large')) {
+						$temp = explode(":", $_POST['submitButton']);
 						$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 						$_SESSION['flipped']++;
 					} else {
-						if ($_SESSION['flipped'] == 1 && $_POST['submit'] != 'Flip back over') {
+						if ($_SESSION['flipped'] == 1 && $_POST['submitButton'] != 'Flip back over') {
 							// Completed turn
 							$_SESSION['turn_count']++;
 							$isshowing = true;
-							$temp = explode(":", $_POST['submit']);
+							$temp = explode(":", $_POST['submitButton']);
 							$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 							$firsti = 5;
 							$firstj = 5;
@@ -112,7 +112,7 @@
 							}
 						}
 					}
-					if ($_POST['submit'] == 'Flip back over')
+					if ($_POST['submitButton'] == 'Flip back over')
 						flippy();
 					if (!$skipShow)
 						displayBoard($isshowing);
