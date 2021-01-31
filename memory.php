@@ -37,8 +37,8 @@
         echo '</div>';
         if ($isshow) {
             echo '<input type="hidden" name="submitButton" value="Flip back over" />';
-            echo '<script type="text/javascript">displayNotification("Flipping back over in 5 seconds.");';   
-            echo 'window.setTimeout(function() {document.getElementById("TheForm").submit();}, 5000);';
+            echo '<script type="text/javascript">displayNotification("Flipping back over in a few seconds.");';   
+            echo 'window.setTimeout(function() {document.getElementById("TheForm").submit();}, 2500);';
             echo '</script>';
             echo '<input type="submit" name="submitButton" value="Flip back over" />';
         }            
