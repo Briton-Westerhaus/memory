@@ -27,6 +27,17 @@
 					flipper.style.transform = "rotateY(180deg)";
 				}
 			}
+
+			function doubleFlip() {
+				let flipper1 = document.getElementById('Flipper1');
+				let flipper2 = document.getElementById('Flipper2');
+				if (!!flipper1) {
+					flipper1.style.transform = "rotateY(-180deg)";
+				}
+				if (!!flipper2) {
+					flipper2.style.transform = "rotateY(-180deg)";
+				}
+			}
 		</script>
 		<?php
 			if (isSet($_POST['submitButton']) && $_POST['submitButton'] == 'New Game') {
@@ -46,7 +57,7 @@
 			}
 		?>
 	</head>
-	<body onload="flip();">
+	<body onload="flip();doubleFlip();">
 		<div class="content">
 			<div id="Notification"></div>
 			<h1>Memory</h1>

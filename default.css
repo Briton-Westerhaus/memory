@@ -96,7 +96,7 @@ td {
     transform-style: preserve-3d;
 }
 
-#Flipper img:last-child {
+#Flipper img:last-child, #Flipper1 button:last-child, #Flipper2 button:last-child {
     transform: rotateY(180deg);
     margin-top: -100%;
 }
