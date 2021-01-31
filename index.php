@@ -11,15 +11,36 @@
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
 		<script type="text/javascript">
+			function displayNotification(message) {
+				let notification = document.getElementById('Notification');
+				notification.innerHTML = message;
+				notification.style.top = "-2px";
+				window.setTimeout(function() {
+					notification.style.transition = "1s linear 3s";
+					notification.style.top = "-3.5em";
+				}, 100);
+			}
+
 			function flip() {
 				let flipper = document.getElementById('Flipper');
 				if (!!flipper) {
 					flipper.style.transform = "rotateY(180deg)";
 				}
 			}
+
+			function doubleFlip() {
+				let flipper1 = document.getElementById('Flipper1');
+				let flipper2 = document.getElementById('Flipper2');
+				if (!!flipper1) {
+					flipper1.style.transform = "rotateY(-180deg)";
+				}
+				if (!!flipper2) {
+					flipper2.style.transform = "rotateY(-180deg)";
+				}
+			}
 		</script>
 		<?php
-			if (isSet($_POST['submit']) && $_POST['submit'] == 'Reset') {
+			if (isSet($_POST['submitButton']) && $_POST['submitButton'] == 'New Game') {
 				unset($_SESSION['height']);
 				unset($_SESSION['width']);
 			}
@@ -36,36 +57,48 @@
 			}
 		?>
 	</head>
-	<body onload="flip();">
+	<body onload="flip();doubleFlip();">
 		<div class="content">
+			<div id="Notification"></div>
 			<h1>Memory</h1>
 			<?php
 				$isshowing = false;
-				if ($_POST['submit'] == '3 x 4') {
+				if ($_POST['submitButton'] == 'Small') {
 					setMatrix(3 ,4);
-				} else if ($_POST['submit'] == '4 x 5') {
+				} else if ($_POST['submitButton'] == 'Medium') {
 					setMatrix(4, 5);
-				} else if ($_POST['submit'] == '5 x 6') {
+				} else if ($_POST['submitButton'] == 'Large') {
 					setMatrix(5, 6);
 				} 
-				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submit'] == 'Reset') {
-					echo '<h3>What size board?</h3>';
-					echo '<form action="index.php" method="post">';
-					echo '<input type="submit" name="submit" value="3 x 4" />';
-					echo '<input type="submit" name="submit" value="4 x 5" />';
-					echo '<input type="submit" name="submit" value="5 x 6" />';
-					echo '</form>';
+				if (!isSet($_SESSION['height']) || !isSet($_SESSION['width']) || !isSet($_SESSION['matrix']) || $_POST['submitButton'] == 'New Game') {
+					?>
+					<h3>What size board?</h3>
+					<form action="index.php" method="post">
+						<section>
+							<input type="submit" name="submitButton" value="Small" />
+							<h5>(3 x 4)</h5>
+						</section><!--
+						--><section>
+							<input type="submit" name="submitButton" value="Medium" />
+							<h5>(4 x 5)</h5>
+						</section><!--
+						--><section>
+							<input type="submit" name="submitButton" value="Large" />
+							<h5>(5 x 6)</h5>
+						</section>
+					</form>
+					<?php
 				} else {
-					if ($_SESSION['flipped'] == 0 && !($_POST['submit'] == '3 x 4' || $_POST['submit'] == '4 x 5' || $_POST['submit'] == '5 x 6')) {
-						$temp = explode(":", $_POST['submit']);
+					if ($_SESSION['flipped'] == 0 && !($_POST['submitButton'] == 'Small' || $_POST['submitButton'] == 'Medium' || $_POST['submitButton'] == 'Large')) {
+						$temp = explode(":", $_POST['submitButton']);
 						$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 						$_SESSION['flipped']++;
 					} else {
-						if ($_SESSION['flipped'] == 1 && $_POST['submit'] != 'Flip back over') {
+						if ($_SESSION['flipped'] == 1 && $_POST['submitButton'] != 'Flip back over') {
 							// Completed turn
 							$_SESSION['turn_count']++;
 							$isshowing = true;
-							$temp = explode(":", $_POST['submit']);
+							$temp = explode(":", $_POST['submitButton']);
 							$_SESSION['matrix'][$temp[1]][$temp[2]]['temp'] = 1;
 							$firsti = 5;
 							$firstj = 5;
@@ -90,7 +123,7 @@
 							}
 						}
 					}
-					if ($_POST['submit'] == 'Flip back over')
+					if ($_POST['submitButton'] == 'Flip back over')
 						flippy();
 					if (!$skipShow)
 						displayBoard($isshowing);
